@@ -1,8 +1,6 @@
 # Mathnetica Tools for CUDA-Q
 
-<p align="center">
-  <img src="images/mq.png" alt="Mathnetica Tools for CUDA-Q logo" width="140" />
-</p>
+![Mathnetica Tools for CUDA-Q logo](images/mq.png)
 
 Independent developer tools for NVIDIA CUDA-Q™ in Visual Studio Code and Cursor.
 
