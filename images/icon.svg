@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <!-- isometric wireframe cube -->
+  <g stroke="#5EC8FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 28 L36 48 L64 68 L92 48 Z"/>
+    <path d="M36 48 L36 86 L64 106"/>
+    <path d="M92 48 L92 86 L64 106"/>
+    <path d="M64 68 L64 106"/>
+  </g>
+</svg>

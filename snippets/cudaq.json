@@ -1,0 +1,56 @@
+{
+  "CUDA-Q Import": {
+    "prefix": "cudaq-import",
+    "body": ["import cudaq", "$0"],
+    "description": "Import CUDA-Q"
+  },
+  "CUDA-Q Kernel": {
+    "prefix": "cudaq-kernel",
+    "body": [
+      "import cudaq",
+      "",
+      "@cudaq.kernel",
+      "def ${1:kernel}():",
+      "    qubits = cudaq.qvector(${2:2})",
+      "",
+      "    ${3:h(qubits[0])}",
+      "    ${4:x.ctrl(qubits[0], qubits[1])}",
+      "$0"
+    ],
+    "description": "CUDA-Q kernel template"
+  },
+  "CUDA-Q QVector": {
+    "prefix": "cudaq-qvector",
+    "body": ["qubits = cudaq.qvector(${1:2})$0"],
+    "description": "Create a CUDA-Q qubit vector"
+  },
+  "CUDA-Q Sample": {
+    "prefix": "cudaq-sample",
+    "body": ["result = cudaq.sample(${1:kernel}, shots_count=${2:1000})", "print(result)$0"],
+    "description": "Sample a CUDA-Q kernel"
+  },
+  "CUDA-Q Observe": {
+    "prefix": "cudaq-observe",
+    "body": [
+      "result = cudaq.observe(${1:kernel}, ${2:hamiltonian}, shots_count=${3:1000})",
+      "print(result)$0"
+    ],
+    "description": "Observe an operator on a CUDA-Q kernel"
+  },
+  "CUDA-Q Bell State": {
+    "prefix": "cudaq-bell",
+    "body": [
+      "import cudaq",
+      "",
+      "@cudaq.kernel",
+      "def bell():",
+      "    qubits = cudaq.qvector(2)",
+      "    h(qubits[0])",
+      "    x.ctrl(qubits[0], qubits[1])",
+      "",
+      "result = cudaq.sample(bell, shots_count=1000)",
+      "print(result)$0"
+    ],
+    "description": "Bell state example with sampling"
+  }
+}

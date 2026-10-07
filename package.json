@@ -1,0 +1,187 @@
+{
+  "name": "mathnetica-tools-for-cudaq",
+  "displayName": "Mathnetica Tools for CUDA-Q",
+  "description": "Independent developer tools for NVIDIA CUDA-Q™ in Visual Studio Code and Cursor.",
+  "version": "0.1.11",
+  "publisher": "mathnetica",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "CUDA-Q",
+    "CUDA Quantum",
+    "NVIDIA",
+    "quantum",
+    "quantum computing",
+    "QPU",
+    "GPU",
+    "quantum development",
+    "CUDA-Q Python",
+    "Jupyter"
+  ],
+  "activationEvents": [
+    "onLanguage:python",
+    "onNotebook:jupyter-notebook"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mathnetica.cudaq.runFile",
+        "title": "Run Current File",
+        "category": "CUDA-Q"
+      },
+      {
+        "command": "mathnetica.cudaq.runKernel",
+        "title": "Run Kernel",
+        "category": "CUDA-Q"
+      },
+      {
+        "command": "mathnetica.cudaq.selectTarget",
+        "title": "Select Target",
+        "category": "CUDA-Q"
+      },
+      {
+        "command": "mathnetica.cudaq.showEnvironment",
+        "title": "Show Environment",
+        "category": "CUDA-Q"
+      },
+      {
+        "command": "mathnetica.cudaq.openDocumentation",
+        "title": "Open Documentation",
+        "category": "CUDA-Q"
+      },
+      {
+        "command": "mathnetica.cudaq.explainSelection",
+        "title": "Explain Selection",
+        "category": "Mathnetica"
+      },
+      {
+        "command": "mathnetica.cudaq.fixSelection",
+        "title": "Fix Selection",
+        "category": "Mathnetica"
+      },
+      {
+        "command": "mathnetica.cudaq.generateCode",
+        "title": "Generate CUDA-Q Code",
+        "category": "Mathnetica"
+      },
+      {
+        "command": "mathnetica.cudaq.setMistralApiKey",
+        "title": "Set Mistral API Key",
+        "category": "Mathnetica"
+      },
+      {
+        "command": "mathnetica.cudaq.removeMistralApiKey",
+        "title": "Remove Mistral API Key",
+        "category": "Mathnetica"
+      },
+      {
+        "command": "mathnetica.cudaq.explainCurrentCell",
+        "title": "Explain Current Cell",
+        "category": "Mathnetica"
+      },
+      {
+        "command": "mathnetica.cudaq.fixCurrentCell",
+        "title": "Fix Current Cell",
+        "category": "Mathnetica"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "mathnetica.cudaq.explainSelection",
+          "when": "mathnetica.cudaq.active && mathnetica.cudaq.aiEnabled && editorHasSelection",
+          "group": "mathneticaCudaQ@1"
+        },
+        {
+          "command": "mathnetica.cudaq.fixSelection",
+          "when": "mathnetica.cudaq.active && mathnetica.cudaq.aiEnabled && editorHasSelection",
+          "group": "mathneticaCudaQ@2"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "mathnetica.cudaq.runFile",
+          "when": "mathnetica.cudaq.active && resourceLangId == python",
+          "group": "mathneticaCudaQ@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Mathnetica Tools for CUDA-Q",
+      "properties": {
+        "mathnetica.cudaq.target": {
+          "type": "string",
+          "default": "",
+          "description": "Selected CUDA-Q execution target."
+        },
+        "mathnetica.cudaq.ai.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable optional AI assistance features."
+        },
+        "mathnetica.cudaq.ai.provider": {
+          "type": "string",
+          "enum": [
+            "ollama",
+            "mistral"
+          ],
+          "default": "ollama",
+          "description": "AI provider for CUDA-Q assistance."
+        },
+        "mathnetica.cudaq.ai.model": {
+          "type": "string",
+          "default": "",
+          "description": "AI model name. Leave empty to use the provider default."
+        },
+        "mathnetica.cudaq.ollama.url": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama server URL for local AI inference."
+        }
+      }
+    },
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./snippets/cudaq.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "typecheck": "tsc --noEmit -p ./",
+    "test": "npm run compile && node ./out/test/runUnitTests.js",
+    "test:integration": "npm run compile && node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "@vscode/test-electron": "^2.3.9",
+    "@vscode/vsce": "^4.0.0",
+    "eslint": "^8.56.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mathnetica/mathnetica-cudaq-vscode.git"
+  }
+}

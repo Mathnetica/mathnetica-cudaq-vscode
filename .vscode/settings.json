@@ -1,0 +1,7 @@
+{
+  "mathnetica.cudaq.target": "qpp-cpu",
+  "mathnetica.cudaq.ai.enabled": true,
+  "mathnetica.cudaq.ai.provider": "ollama",
+  "mathnetica.cudaq.ai.model": "llama3.2",
+  "mathnetica.cudaq.ollama.url": "http://localhost:11434"
+}
